@@ -9,6 +9,20 @@ public class Coin : MonoBehaviour
     public GameObject puffObject;
     public AudioSource puffSound;
 
+    private float floatingSpeed = 1;
+    private float floatingAmplitude = 0.1f;
+
+    private float startPositionY;
+    void Start()
+    {
+        startPositionY = transform.position.y;
+    }
+
+    void Update()
+    {
+        transform.position = new Vector3(transform.position.x, startPositionY + floatingAmplitude * Mathf.Sin(floatingSpeed * Time.time), transform.position.z);
+    }
+
     public void OnCoinClicked() {
         puffSound.Play();
         Vector3 coinPosition = transform.position;
