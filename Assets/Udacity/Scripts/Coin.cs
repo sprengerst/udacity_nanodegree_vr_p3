@@ -8,6 +8,7 @@ public class Coin : MonoBehaviour
 
     public GameObject puffObject;
     public AudioSource puffSound;
+    public SignPost resultSignClass;
 
     private float floatingSpeed = 1;
     private float floatingAmplitude = 0.1f;
@@ -24,6 +25,7 @@ public class Coin : MonoBehaviour
     }
 
     public void OnCoinClicked() {
+        resultSignClass.IncrementCoinCount();
         puffSound.Play();
         Vector3 coinPosition = transform.position;
         Object.Instantiate(puffObject, coinPosition, Quaternion.Euler(-90, 0, 0));
