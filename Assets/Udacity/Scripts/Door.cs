@@ -10,6 +10,10 @@ public class Door : MonoBehaviour
     bool locked = true;
     bool opening = false;
 
+    public AudioSource doorLockedSound;
+    public AudioSource doorOpeningSound;
+
+
 
     void Update() {
         if (opening)
@@ -20,27 +24,27 @@ public class Door : MonoBehaviour
             }
 
         }
-        // If the door is opening and it is not fully raised
-            // Animate the door raising up
     }
 
+    // If the door is clicked and unlocked
+    // Set the "opening" boolean to true
+    // (optionally) Else
+    // Play a sound to indicate the door is locked
     public void OnDoorClicked() {
         if (!locked)
         {
             opening = true;
-        }else
+            doorOpeningSound.Play();
+        }
+        else
         {
+            doorLockedSound.Play();
             Debug.Log("Door stays locked");
         }
-        // If the door is clicked and unlocked
-            // Set the "opening" boolean to true
-        // (optionally) Else
-            // Play a sound to indicate the door is locked
     }
 
     public void Unlock()
     {
         locked = false;
-        // You'll need to set "locked" to false here
     }
 }

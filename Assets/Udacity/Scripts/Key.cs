@@ -9,6 +9,8 @@ public class Key : MonoBehaviour
     public AudioSource puffSound;
     public Door doorToOpen;
 
+    public static bool keyCollected = false;
+
     private float floatingSpeed = 1;
     private float floatingAmplitude = 0.5f;
 
@@ -22,6 +24,8 @@ public class Key : MonoBehaviour
 	}
     
     public void OnKeyClicked(){
+
+        keyCollected = true;
 
         puffSound.Play();
         Vector3 coinPosition = transform.position;
