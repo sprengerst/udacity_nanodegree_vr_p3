@@ -10,9 +10,9 @@ public class Coin : MonoBehaviour
     public AudioSource puffSound;
 
     public void OnCoinClicked() {
+        puffSound.Play();
         Vector3 coinPosition = transform.position;
         Object.Instantiate(puffObject, coinPosition, Quaternion.Euler(-90, 0, 0));
-        puffSound.Play();
         Destroy(this.gameObject);
         // Instantiate the CoinPoof Prefab where this coin is located
         // Make sure the poof animates vertically
